@@ -1,4 +1,4 @@
-name: 'Compile Mermaid Markdown'
+name: 'Compile Mermaid Markdown (beta)'
 description: '*.mmd files or *.md with mermaid codeblocks and compile them'
 branding:
   icon: 'grid'
