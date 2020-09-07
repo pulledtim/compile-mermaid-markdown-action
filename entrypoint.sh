@@ -53,8 +53,11 @@ function main {
         die "*.${file_type} is not a recognized type.  Check that your Github action is submitting a valid file to this entrypoint."
 
       fi
+    else
+      printf "File: %s not found \n" "${file}"
     fi
   done
+  printf "done processing files"
 }
 
 # $1 - the file to compile
