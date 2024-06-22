@@ -1,4 +1,4 @@
-FROM marloxo/mermaid:8.7.0
+FROM minlag/mermaid-cli:10.9.1
 
 WORKDIR /mmdc
 COPY . /mmdc
