@@ -1,4 +1,4 @@
-FROM node:13.13.0
+FROM node:18.20.3
 
 LABEL maintainer="omarsabekz@gmail.com"
 
@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y wget --no-install-recommends \
 
 # Install puppeteer so it's available in the container.
 RUN yarn add puppeteer
-RUN yarn add @mermaid-js/mermaid-cli
+RUN yarn add @mermaid-js/mermaid-cli@10.9.1
 
 # Add puppeteer user (pptruser).
 RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
