@@ -25,6 +25,9 @@ function main {
   mkdir -p "${outpath}"
   printf "Got output path: %s\n" "${outpath}"
 
+  printf "Copying puppeteer cache from root to /github/home/.cache/puppeteer"
+  cp -r /root/.cache/ /github/home/.cache/
+
   shift $(( OPTIND - 1 ))
 
   for file in "$@"; do
