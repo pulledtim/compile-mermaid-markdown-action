@@ -8,12 +8,12 @@
 # Usage:
 #   > entrypoint.sh <output path> [<file1> [<file2> ...]]
 
-# For *.mermaid files, it is compiled and a *.mermaid.png is created at the location
+# For *.mermaid files, it is compiled and a *.mermaid.svg is created at the location
 
 # For *.md files:
 #   1) finds all of the mermaid markup in the file
 #   2) creates intermediate files in the output directory *.md.<n>.mermaid where n represents the nth block found
-#   3) compile the mermaid to the directory *.md.<n>.mermaid.png
+#   3) compile the mermaid to the directory *.md.<n>.mermaid.svg
 #   4) place a reference to the compiled image in the markdown
 
 set -euo pipefail
@@ -43,7 +43,7 @@ function main {
       if [[ "${file_type}" == "mermaid" ]]; then
 
         output_path="${file_dirname}"
-        output_file="$(dasherize_name ${file_basename}).png"
+        output_file="$(dasherize_name ${file_basename}).svg"
         c_mermaid "${file}" "${output_path}/${output_file}"
 
       elif [[ "${file_type}" == "md" ]]; then
@@ -108,11 +108,11 @@ function c_md_mermaid {
     rm "${all_file}x"
 
     # Compile mermaid block"
-    c_mermaid "${block_file}-${block_count}" "${2}/${dasherized}-${block_count}.png"
+    c_mermaid "${block_file}-${block_count}" "${2}/${dasherized}-${block_count}.svg"
 
     # Compute relative path from the markdown to the tmp_dir
-    image_relative_path=$(realpath --relative-to="${input_dir}" "${2}/${dasherized}-${block_count}.png")
-    image_absolute_path="/${2}/${dasherized}-${block_count}.png"
+    image_relative_path=$(realpath --relative-to="${input_dir}" "${2}/${dasherized}-${block_count}.svg")
+    image_absolute_path="/${2}/${dasherized}-${block_count}.svg"
 
     if [[ -z "${ABSOLUTE_IMAGE_LINKS}" ]]; then
       image_path="${image_relative_path}"
