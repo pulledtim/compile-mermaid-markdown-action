@@ -70,6 +70,7 @@ function c_mermaid {
   printf "Output to: %s\n" "${2}"
   /node_modules/.bin/mmdc -p /mmdc/puppeteer-config.json -i "${1}" -o "${2}"
   confirm_creation "${2}"
+  inkscape -w 1024 "${2}" -o "${2}.png"
 }
 
 # $1 - the file to compile
